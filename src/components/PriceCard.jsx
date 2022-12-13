@@ -12,6 +12,14 @@ const PriceCard = () => {
   if (card.length > 0) {
     content = card.map((i) => <Item key={i._id} product={i} />);
   }
+  // Total price calculation
+  const totalPrice = card.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.quantity * currentValue.price;
+  }, 0);
+  // Total Item calculation
+  const totalItem = card.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.quantity;
+  }, 0);
   return (
     <div className="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
       <div className="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
@@ -19,7 +27,7 @@ const PriceCard = () => {
         <div className="flex justify-center items-center text-center">
           <div className="text-xl font-semibold">
             <p>Total Item</p>
-            <p className="text-5xl">0</p>
+            <p className="text-5xl">{totalItem}</p>
           </div>
         </div>
       </div>
@@ -27,7 +35,7 @@ const PriceCard = () => {
         <div className="flex justify-center items-center text-center">
           <div className="text-xl font-semibold">
             <p>Total Price</p>
-            <p className="text-5xl">0</p>
+            <p className="text-5xl">{totalPrice}</p>
           </div>
         </div>
       </div>
