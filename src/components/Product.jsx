@@ -14,14 +14,14 @@ const Product = ({ product }) => {
       <div className="flex justify-between px-4 items-center">
         <div className="text-lg font-semibold">
           <p>
-            {title} {`(${quantity})`}
+            {title} {`(${quantity ? quantity : "Stock Out"})`}
           </p>
           <p className="text-gray-400 text-base">Tk {price}</p>
         </div>
         <div className="text-lg font-semibold">
           <button
             disabled={quantity ? false : true}
-            className="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
+            className="focus:outline-none bg-emerald-500 hover:bg-emerald-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
             onClick={handleClick}
           >
             <svg

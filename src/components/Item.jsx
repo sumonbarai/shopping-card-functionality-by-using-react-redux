@@ -26,7 +26,7 @@ const Item = ({ product }) => {
         <div className="flex flex-row space-x-2 w-full items-center rounded-lg">
           <button
             onClick={handleRemoveToCard}
-            className="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+            className="focus:outline-none bg-emerald-500 hover:bg-emerald-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ const Item = ({ product }) => {
           <button
             disabled={myProduct.quantity ? false : true}
             onClick={handleAddToCard}
-            className="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+            className="focus:outline-none bg-emerald-500 hover:bg-emerald-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
