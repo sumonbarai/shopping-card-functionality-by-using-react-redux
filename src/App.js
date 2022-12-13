@@ -14,6 +14,7 @@ import {
 function App() {
   const { product } = useSelector((state) => state);
   const dispatch = useDispatch();
+  // data fetch in local json file
   useEffect(() => {
     dispatch(productRequestAction());
     fetch("products.json")
@@ -21,6 +22,8 @@ function App() {
       .then((data) => dispatch(productSuccessAction(data)))
       .catch(dispatch(productFailedAction("there was an error")));
   }, [dispatch]);
+  // sort by amount
+  const sortByAmount = (a, b) => b.price - a.price;
   //  what is render
   let content;
   if (product.isLoading) {
@@ -30,9 +33,9 @@ function App() {
     content = <p>product.error</p>;
   }
   if (!product.isLoading && product.product.length > 0) {
-    content = product.product.map((prod) => (
-      <Product key={prod._id} product={prod} />
-    ));
+    content = product.product
+      .sort(sortByAmount)
+      .map((prod) => <Product key={prod._id} product={prod} />);
   }
 
   return (

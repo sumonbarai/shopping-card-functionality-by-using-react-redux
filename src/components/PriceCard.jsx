@@ -4,13 +4,25 @@ import Item from "./Item";
 
 const PriceCard = () => {
   const { card } = useSelector((state) => state.product);
+  // sorting function
+  const sortByTitle = (a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  };
   // what to render
   let content;
   if (card.length === 0) {
     content = <p className="text-2xl text-center p-4">No item added</p>;
   }
   if (card.length > 0) {
-    content = card.map((i) => <Item key={i._id} product={i} />);
+    content = card
+      .sort(sortByTitle)
+      .map((i) => <Item key={i._id} product={i} />);
   }
   // Total price calculation
   const totalPrice = card.reduce((accumulator, currentValue) => {

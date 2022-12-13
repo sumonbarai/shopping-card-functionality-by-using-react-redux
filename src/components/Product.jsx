@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addToCardAction } from "../redux/product/actionCreator";
 
 const Product = ({ product }) => {
-  const { _id, title, price, quantity } = product;
+  const { title, price, quantity } = product;
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(addToCardAction(product));

@@ -5,14 +5,14 @@ import {
   PRODUCTSUCCESS,
   REMOVETOCARD,
 } from "./actionType";
-
+// initialState define
 const initalState = {
   product: [],
   isLoading: false,
   error: "",
   card: [],
 };
-
+// reducer for product
 const reducer = (state = initalState, action) => {
   switch (action.type) {
     case PRODUCTREQUEST:
@@ -85,9 +85,10 @@ const reducer = (state = initalState, action) => {
       const isRemoveExist = state.card.find(
         (pro) => pro._id === upcomingRemoveId
       );
-
+      // checking item is exist or not
       if (isRemoveExist) {
         const numberOfItem = isRemoveExist.quantity;
+        // checking item is number of item in card
         if (numberOfItem > 1) {
           const remainCard = state.card.filter(
             (c) => c._id !== upcomingRemoveId
